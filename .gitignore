@@ -2,3 +2,5 @@
 obj/
 2dthing.depend
 core
+2dthing
+ValgrindOut.xml
