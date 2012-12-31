@@ -6,7 +6,7 @@ Bitmap::Bitmap(int w, int h)
     this->w=w;
     this->h=h;
     this->managed=true;
-    this->surface=SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, 16, 0, 0, 0, 0);
+    this->surface=SDL_CreateRGBSurface(SDL_SWSURFACE, w, h, 32, 0, 0, 0, 0);
 }
 
 Bitmap::Bitmap(SDL_Surface *s, bool manage)
@@ -56,7 +56,7 @@ bool Bitmap::copyTo(Bitmap *b, int tx, int ty)
 
 void Bitmap::setPixel(int x, int y, Uint32 color)
 {
-    *(Uint16*)((Uint8*)surface->pixels+y*surface->pitch+x*2)=color;
+    *(Uint32*)((Uint8*)surface->pixels+y*surface->pitch+x*4)=color;
 }
 
 void Bitmap::setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b)
@@ -66,7 +66,7 @@ void Bitmap::setPixel(int x, int y, unsigned char r, unsigned char g, unsigned c
 
 Uint32 Bitmap::getPixel(int x, int y)
 {
-    return *(Uint16*)((Uint8*)surface->pixels+y*surface->pitch+x*2);
+    return *(Uint32*)((Uint8*)surface->pixels+y*surface->pitch+x*4);
 }
 
 Bitmap Bitmap::scale(int nw, int nh)
