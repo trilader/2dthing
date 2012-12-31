@@ -23,12 +23,12 @@ Bitmap::~Bitmap()
         SDL_FreeSurface(this->surface);
 }
 
-int Bitmap::getW()
+int Bitmap::getW() const
 {
     return w;
 }
 
-int Bitmap::getH()
+int Bitmap::getH() const
 {
     return h;
 }
@@ -38,20 +38,20 @@ bool Bitmap::getManaged()
     return managed;
 }
 
-void Bitmap::copyTo(Bitmap &b, int tx, int ty)
+bool Bitmap::copyTo(Bitmap *b, int tx, int ty)
 {
-    int ow=b.getW(), oh=b.getH();
+    int ow=b->getW(), oh=b->getH();
+    if(tx>ow||ty>oh) return false;
     for(int y=0;y<h;y++)
     {
         if(ty+y>oh) continue;
         for(int x=0;x<w;x++)
         {
             if(tx+y>ow) continue;
-            b.setPixel(tx+x, ty+y, getPixel(x, y));
+            b->setPixel(tx+x, ty+y, getPixel(x, y));
         }
     }
-
-
+    return false;
 }
 
 void Bitmap::setPixel(int x, int y, Uint32 color)
