@@ -1,7 +1,7 @@
 #ifndef BITMAP_H
 #define BITMAP_H
 
-class SDL_Surface;
+#include <SDL/SDL.h>
 
 class Bitmap
 {
