@@ -3,21 +3,18 @@
 #include <unistd.h>
 #include <SDL/SDL.h>
 #include "Bitmap.h"
+#include "Screen.h"
 
 int main(int argc, char *argv[])
 {
-    if(SDL_Init(SDL_INIT_VIDEO)<0)
-        return 1;
-    atexit(SDL_Quit);
+    Screen screen = Screen(50, 50, 4);
 
-    SDL_Surface *screen=SDL_SetVideoMode(800,600,16,SDL_SWSURFACE);
-    Bitmap screenB(screen, false);
+    Bitmap *b = new Bitmap(200,150);
+    b->setPixel(10,10,255,255,255);
 
-    Bitmap b(200,150);
-    b.setPixel(10,10,255,255,255);
+    screen.draw(b, 0, 0);
 
-    b.scale(800,600).copyTo(screenB,0,0);
-    SDL_UpdateRect(screen,0,0,screen->w,screen->h);
+    screen.update();
 
     SDL_Event event;
     while(1)

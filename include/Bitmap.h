@@ -9,10 +9,10 @@ public:
     Bitmap(int w, int h);
     Bitmap(SDL_Surface *s, bool manage=true);
     ~Bitmap();
-    int getW();
-    int getH();
+    int getW() const;
+    int getH() const;
     bool getManaged();
-    void copyTo(Bitmap &b, int tx, int ty);
+    bool copyTo(Bitmap *b, int tx, int ty);
     void setPixel(int x, int y, Uint32 color);
     void setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
     Uint32 getPixel(int x, int y);
