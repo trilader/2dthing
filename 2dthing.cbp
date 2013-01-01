@@ -39,6 +39,7 @@
 		</Linker>
 		<Unit filename="include/Bitmap.h" />
 		<Unit filename="include/BitmapSlicer.h" />
+		<Unit filename="include/Color.h" />
 		<Unit filename="include/Font.h" />
 		<Unit filename="include/ImageLoader.h" />
 		<Unit filename="include/NormalFont.h" />
@@ -46,6 +47,7 @@
 		<Unit filename="include/StringUtil.h" />
 		<Unit filename="src/Bitmap.cpp" />
 		<Unit filename="src/BitmapSlicer.cpp" />
+		<Unit filename="src/Color.cpp" />
 		<Unit filename="src/Font.cpp" />
 		<Unit filename="src/ImageLoader.cpp" />
 		<Unit filename="src/NormalFont.cpp" />
