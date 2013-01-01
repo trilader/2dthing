@@ -56,7 +56,7 @@ bool Bitmap::copyTo(Bitmap *b, int tx, int ty)
 
 void Bitmap::setPixel(int x, int y, Uint32 color)
 {
-    *(Uint32*)((Uint8*)surface->pixels+y*surface->pitch+x*4)=color;
+    *(Uint32*)((Uint8*)surface->pixels+y*surface->pitch+x*surface->format->BytesPerPixel)=color;
 }
 
 void Bitmap::setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b)
@@ -66,7 +66,7 @@ void Bitmap::setPixel(int x, int y, unsigned char r, unsigned char g, unsigned c
 
 Uint32 Bitmap::getPixel(int x, int y)
 {
-    return *(Uint32*)((Uint8*)surface->pixels+y*surface->pitch+x*4);
+    return *(Uint32*)((Uint8*)surface->pixels+y*surface->pitch+x*surface->format->BytesPerPixel);
 }
 
 Bitmap Bitmap::scale(int nw, int nh)
