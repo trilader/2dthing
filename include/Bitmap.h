@@ -12,7 +12,8 @@ public:
     int getW() const;
     int getH() const;
     bool getManaged();
-    bool copyTo(Bitmap *b, int tx, int ty);
+    //bool copyTo(Bitmap *b, int tx, int ty, bool transparent=true);
+    bool copyTo(Bitmap *b, int tx, int ty, int sx=0, int sy=0, int w=-1, int h=-1, bool transparent=true);
     void setPixel(int x, int y, Uint32 color);
     void setPixel(int x, int y, unsigned char r, unsigned char g, unsigned char b);
     Uint32 getPixel(int x, int y);

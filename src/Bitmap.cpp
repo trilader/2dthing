@@ -1,5 +1,7 @@
 #include <SDL/SDL.h>
+#include <iostream>
 #include "Bitmap.h"
+#include "Color.h"
 
 Bitmap::Bitmap(int w, int h)
 {
@@ -37,8 +39,8 @@ bool Bitmap::getManaged()
 {
     return managed;
 }
-
-bool Bitmap::copyTo(Bitmap *b, int tx, int ty)
+/*
+bool Bitmap::copyTo(Bitmap *b, int tx, int ty, bool transparent)
 {
     int ow=b->getW(), oh=b->getH();
     if(tx>ow||ty>oh) return false;
@@ -47,11 +49,34 @@ bool Bitmap::copyTo(Bitmap *b, int tx, int ty)
         if(ty+y>oh) continue;
         for(int x=0;x<w;x++)
         {
-            if(tx+y>ow) continue;
-            b->setPixel(tx+x, ty+y, getPixel(x, y));
+            if(tx+x>ow) continue;
+            Uint32 p=getPixel(x,y);
+            if(transparent && Color(p,surface->format)==Color(255,0,255)) continue;
+            b->setPixel(tx+x, ty+y, p);
         }
     }
-    return false;
+    return true;
+}
+*/
+bool Bitmap::copyTo(Bitmap *b, int tx, int ty, int sx, int sy, int cw, int ch, bool transparent)
+{
+    int ow=b->getW(), oh=b->getH();
+    if(cw==-1) cw=w-sx;
+    if(ch==-1) ch=h-sy;
+
+    if(tx>ow||ty>oh) return false;
+    for(int y=sy;y<ch;y++)
+    {
+        if(ty+y>oh) continue;
+        for(int x=sx;x<cw;x++)
+        {
+            if(tx+x>ow) continue;
+            Uint32 p=getPixel(x,y);
+            if(transparent && Color(p,surface->format)==Color(255,0,255)) continue;
+            b->setPixel(tx+x, ty+y, p);
+        }
+    }
+    return true;
 }
 
 void Bitmap::setPixel(int x, int y, Uint32 color)

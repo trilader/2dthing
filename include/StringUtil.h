@@ -4,9 +4,10 @@
 #include <iostream>
 #include <vector>
 
-namespace StringUtil
+class StringUtil
 {
-    std::vector<std::string> split(std::string str, const char c='\n')
+public:
+    static std::vector<std::string> split(std::string str, const char c='\n')
     {
         std::string tmp=str;
         std::vector<std::string> res;
@@ -16,15 +17,16 @@ namespace StringUtil
             res.push_back(tmp.substr(0,pos));
             tmp=tmp.substr(pos+1);
         }
+        res.push_back(tmp);
         return res;
     }
 
-    int count(std::string str, const char c)
+    static int count(std::string str, const char c)
     {
         int res=0;
         while(str.find(c)!=std::string::npos) ++res;
         return res;
     }
-}
+};
 
 #endif // STRING_UTIL_H
