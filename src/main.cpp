@@ -19,8 +19,10 @@ int main(int argc, char *argv[])
     }
     screen.draw(b, 0, 0);*/
 
-    Bitmap b2(100,50);
-    NormalFont::instance->drawTo(&b2,0,0,std::string("Hallo Welt\nMONPQRSTUVWX\nYZ1234567890,.;:-_"));
+    Bitmap b2(100,100);
+    //for(int i=0;i<16*6;i++) NormalFont::instance->debug(&b2,i);
+    NormalFont::instance->drawTo(&b2,0,0,std::string("Hallo Welt."));
+    //NormalFont::instance->printLookup();
     screen.draw(&b2,0,0);
 
     screen.update();

@@ -67,10 +67,10 @@ bool Bitmap::copyTo(Bitmap *b, int tx, int ty, int sx, int sy, int cw, int ch, b
     if(tx>ow||ty>oh) return false;
     for(int y=sy;y<ch;y++)
     {
-        if(ty+y>oh) continue;
+        if(ty+y>=oh) continue;
         for(int x=sx;x<cw;x++)
         {
-            if(tx+x>ow) continue;
+            if(tx+x>=ow) continue;
             Uint32 p=getPixel(x,y);
             if(transparent && Color(p,surface->format)==Color(255,0,255)) continue;
             b->setPixel(tx+x, ty+y, p);
