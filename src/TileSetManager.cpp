@@ -1,5 +1,6 @@
 #include "Tile.h"
 #include "ImageLoader.h"
+#include "Bitmap.h"
 #include "BitmapSlicer.h"
 #include "TileSetManager.h"
 

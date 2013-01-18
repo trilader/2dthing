@@ -5,6 +5,8 @@
 #include <map>
 #include <vector>
 
+class Bitmap;
+
 class TileSetManager
 {
 public:
