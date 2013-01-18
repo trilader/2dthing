@@ -1,0 +1,9 @@
+﻿FF000000
+FF3D3D3D
+FF5B5B5B
+FF7A7A7A
+FF999999
+FFB7B7B7
+FFD6D6D6
+FFFFFFFF
+FFFF00FF ;mangenta, not a replacement color, just for the editor
