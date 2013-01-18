@@ -3,14 +3,14 @@
 #include "Color.h"
 #include "Palette.h"
 
-const Color PALETTE_COLOR_1(0, 0, 0);
-const Color PALETTE_COLOR_2(32, 32, 32);
-const Color PALETTE_COLOR_3(64, 64, 64);
-const Color PALETTE_COLOR_4(96, 96, 96);
-const Color PALETTE_COLOR_5(128, 128, 128);
-const Color PALETTE_COLOR_6(160, 160, 160);
-const Color PALETTE_COLOR_7(192, 192, 192);
-const Color PALETTE_COLOR_8(224, 224, 224);
+const Color PALETTE_COLOR_1(0x00, 0x00, 0x00);
+const Color PALETTE_COLOR_2(0x3d, 0x3d, 0x3d);
+const Color PALETTE_COLOR_3(0x5b, 0x5b, 0x5b);
+const Color PALETTE_COLOR_4(0x7a, 0x7a, 0x7a);
+const Color PALETTE_COLOR_5(0x99, 0x99, 0x99);
+const Color PALETTE_COLOR_6(0xb7, 0xb7, 0xb7);
+const Color PALETTE_COLOR_7(0xd6, 0xd6, 0xd6);
+const Color PALETTE_COLOR_8(0xff, 0xff, 0xff);
 
 Palette::Palette(Color colors[])
 {
@@ -35,4 +35,6 @@ Color Palette::getReplacementColor(Color color) const
         return colors[6];
     if (color == PALETTE_COLOR_8)
         return colors[7];
+    else
+        return Color::Transparent;
 }
