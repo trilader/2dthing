@@ -4,6 +4,8 @@
 #include <SDL/SDL.h>
 #include "Bitmap.h"
 #include "Screen.h"
+#include "Gui.h"
+#include "Color.h"
 #include "NormalFont.h"
 
 int main(int argc, char *argv[])
@@ -11,19 +13,16 @@ int main(int argc, char *argv[])
     new NormalFont();
     Screen screen = Screen(100, 100, 4);
 
-    /*Bitmap *b = new Bitmap(200,150);
-    for(int i=0;i<10;i++)
-    {
-        b->setPixel(10+i,10,50+i*20,255,255);
-        b->setPixel(10+i,11,255,255,255);
-    }
-    screen.draw(b, 0, 0);*/
+    //Bitmap b2(100,10);
+    //NormalFont::instance->drawTo(&b2,0,0,std::string("Hallo Welt."));
+    //Color p_cols[]={Color::Blue,Color(0xab,0xab,0xab),Color(0xcf,0xcf,0xcf),Color(),Color(),Color(),Color(),Color::Transparent};
+    //Palette p(p_cols);
+    Gui::Box box(NormalFont::instance->measureW("Test"),8,NULL);
+    Bitmap b=box.render();
+    NormalFont::instance->drawTo(&b,5,5,std::string("Test"));
+    screen.draw(&b,0,0);
 
-    Bitmap b2(100,100);
-    //for(int i=0;i<16*6;i++) NormalFont::instance->debug(&b2,i);
-    NormalFont::instance->drawTo(&b2,0,0,std::string("Hallo Welt."));
-    //NormalFont::instance->printLookup();
-    screen.draw(&b2,0,0);
+    //screen.draw(&b2,0,10);
 
     screen.update();
 
@@ -35,6 +34,7 @@ int main(int argc, char *argv[])
         switch (event.type)
         {
         case SDL_QUIT:
+            delete NormalFont::instance;
             exit(0);
         default:
             break;
