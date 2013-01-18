@@ -13,8 +13,8 @@ public:
     Font();
     virtual ~Font();
     virtual void drawTo(Bitmap *b, int x, int y, std::string text)=0;
-    int measureH(std::string text);
-    int measureW(std::string text);
+    virtual int measureH(std::string text);
+    virtual int measureW(std::string text);
 protected:
     std::vector<Bitmap*> data;
     std::string lookup;

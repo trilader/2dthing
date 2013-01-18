@@ -8,9 +8,8 @@ class NormalFont: public Font
 public:
     NormalFont();
     ~NormalFont();
-    void printLookup();
-    void debug(Bitmap *b, int num);
     void drawTo(Bitmap *b, int x, int y, std::string text);
+    int measureW(std::string text);
     static NormalFont *instance;
 private:
     int glyphWidth;
