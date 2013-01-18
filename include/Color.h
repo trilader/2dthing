@@ -15,6 +15,13 @@ public:
     Uint8 getG() const;
     Uint8 getB() const;
     bool operator==(Color other);
+    static Color White;
+    static Color Black;
+    static Color Transparent;
+    static Color Red;
+    static Color Green;
+    static Color Yellow;
+    static Color Blue;
 private:
     Uint8 r,g,b;
 };

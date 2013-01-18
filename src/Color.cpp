@@ -1,5 +1,13 @@
 #include "Color.h"
 
+Color Color::White(255,255,255);
+Color Color::Black(0,0,0);
+Color Color::Transparent(255,0,255);
+Color Color::Red(255,0,0);
+Color Color::Green(0,255,0);
+Color Color::Yellow(255,255,0);
+Color Color::Blue(0,0,255);
+
 Color::Color()
 {
     this->r=0;
