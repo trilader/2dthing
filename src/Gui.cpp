@@ -12,8 +12,9 @@ namespace Gui
         this->innerWidth=iw;
         this->innerHeight=ih;
         this->palette=p;
-        this->height=innerHeight+10;
-        this->width=innerWidth+10;
+        this->height=innerHeight+8;
+        this->width=innerWidth+8;
+
         Bitmap *tmp=ImageLoader::load("res/gui/box.png");
         if(tmp)
         {
@@ -21,21 +22,24 @@ namespace Gui
             delete tmp;
         }
         else std::cerr<<"Could not load res/gui/box.png"<<std::endl;
+        for(auto it=parts.begin();it!=parts.end();it++)
+            (*it)->applyPalette(palette);
 
     }
 
     Bitmap Box::render()
     {
+
         Bitmap m(width, height);
-        parts[0]->copyTo(&m,0,0,3,3);
-        parts[1]->scale(innerWidth,8).copyTo(&m,5,0,0,3);
-        parts[2]->copyTo(&m,width-5,0,0,3);
-        parts[7]->scale(8,innerHeight).copyTo(&m,0,5,3);
-        parts[8]->scale(innerWidth,innerHeight).copyTo(&m,5,5);
-        parts[3]->scale(8,innerHeight).copyTo(&m,width-5,5,0,0);
-        parts[4]->copyTo(&m,0,height-5,3,0);
-        parts[5]->scale(innerWidth,8).copyTo(&m,5,height-5);
-        parts[6]->copyTo(&m,width-5,height-5);
+        parts[0]->copyTo(&m,0,0,4,4);
+        parts[1]->scale(innerWidth,8).copyTo(&m,4,0,0,4);
+        parts[0]->flipH().copyTo(&m,width-4,0,0,4,4);
+        parts[2]->flipH().scale(8,innerHeight).copyTo(&m,0,4,4);
+        parts[3]->scale(innerWidth,innerHeight).copyTo(&m,4,4);
+        parts[2]->scale(8,innerHeight).copyTo(&m,width-4,4,0,0);
+        parts[0]->flipV().copyTo(&m,0,height-4,4,0,4);
+        parts[1]->flipV().scale(innerWidth,8).copyTo(&m,4,height-4);
+        parts[0]->flipV().flipH().copyTo(&m,width-4,height-4);
         return m;
     }
 

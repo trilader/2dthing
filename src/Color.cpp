@@ -56,3 +56,9 @@ bool Color::operator==(Color other)
 {
     return r==other.getR()&&g==other.getG()&&b==other.getB();
 }
+
+std::ostream& operator<<(std::ostream &os, Color col)
+{
+    os<<"("<<int(col.getR())<<","<<int(col.getG())<<","<<int(col.getB())<<")";
+    return os;
+}

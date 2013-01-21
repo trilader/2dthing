@@ -1,6 +1,7 @@
 #ifndef COLOR_H
 #define COLOR_H
 
+#include <iostream>
 #include <SDL/SDL.h>
 
 class Color
@@ -25,5 +26,7 @@ public:
 private:
     Uint8 r,g,b;
 };
+
+std::ostream& operator<<(std::ostream &os, Color col);
 
 #endif // COLOR_H

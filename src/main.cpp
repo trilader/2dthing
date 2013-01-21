@@ -7,23 +7,33 @@
 #include "Gui.h"
 #include "Color.h"
 #include "NormalFont.h"
+#include "Palette.h"
 
 int main(int argc, char *argv[])
 {
     new NormalFont();
-    Screen screen = Screen(100, 100, 4);
+    Screen screen = Screen(100, 100, 6);
 
-    //Bitmap b2(100,10);
-    //NormalFont::instance->drawTo(&b2,0,0,std::string("Hallo Welt."));
-    //Color p_cols[]={Color::Blue,Color(0xab,0xab,0xab),Color(0xcf,0xcf,0xcf),Color(),Color(),Color(),Color(),Color::Transparent};
-    //Palette p(p_cols);
-    Gui::Box box(NormalFont::instance->measureW("Test"),8,NULL);
+    Color p_cols[]={Color::Blue,
+        Color::Red,
+        Color(0xcf,0xcf,0xcf),
+        Color::White,
+        Color::White,
+        Color::White,
+        Color::White,
+        Color::Transparent
+    };
+
+    Palette p(p_cols);
+    Bitmap bg(100,100);
+    bg.fill(Color(0xab,0xab,0xab));
+    //Gui::Box box(NormalFont::instance->measureW("Test"),8,&p);
+    Gui::Box box(10,10,&p);
     Bitmap b=box.render();
-    NormalFont::instance->drawTo(&b,5,5,std::string("Test"));
+    //NormalFont::instance->drawTo(&b,5,5,"Test");
+
+    screen.draw(&bg,0,0);
     screen.draw(&b,0,0);
-
-    //screen.draw(&b2,0,10);
-
     screen.update();
 
     SDL_Event event;

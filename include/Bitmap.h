@@ -2,11 +2,13 @@
 #define BITMAP_H
 
 #include <SDL/SDL.h>
+class Palette;
+class Color;
 
 class Bitmap
 {
 public:
-    Bitmap(int w, int h);
+    Bitmap(int w, int h, bool transparent=true);
     Bitmap(SDL_Surface *s, bool manage=true);
     ~Bitmap();
     int getW() const;
@@ -20,10 +22,13 @@ public:
     Bitmap flipV() const;
     Bitmap clone() const;
     Bitmap scale(int x, int y) const;
+    void fill(Color col);
+    void applyPalette(Palette *p);
     SDL_Surface *getSurface() const;
 private:
     int w,h;
     bool managed;
+    bool transparent;
     SDL_Surface *surface;
 
 };
